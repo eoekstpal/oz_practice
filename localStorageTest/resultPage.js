@@ -23,6 +23,45 @@ const urlParams = new URLSearchParams(queryString);
 const fScoreValue = urlParams.get("value");
 const tScoreValue = 100 - fScoreValue;
 
+/*로컬스토리지 기록 보기 추가 내용*/
+const tfResultList = document.getElementById('tfResultList')
+let historyArr = [];
+//로컬스토리지에 추가하기
+function saveHistory(){
+  const tfResultString = JSON.stringify(historyArr)
+  localStorage.setItem("history", tfResultString)
+}
+//로컬스토리지 가져오기
+function loadResult(){
+  const history = localStorage.getItem("history")
+  if(history !== null){
+    historyArr = JSON.parse(history)
+    displayResult()
+  }
+}
+loadResult()
+//기록 보여주기
+function displayResult(){
+  historyArr.forEach(function(ahistory){
+    const addLi = document.createElement('li')
+    addLi.textContent = ahistory.fresultHistory
+    addLi.textContent = ahistory.tresultHistory
+    addLi.textContent = ahistory.historyId
+// 제일 마지막에 선언된건만 추가됨
+    tfResultList.appendChild(addLi)
+  })
+}
+//기록 배열에 추가
+window.onload = function addHistory(){
+  const tfAdded = {
+    historyId: new Date().getTime(),
+    fresultHistory: f_Progress.value,
+    tresultHistory: t_Progress.value
+  }
+  historyArr.push(tfAdded)
+  saveHistory()
+}
+
 function get_Result() {
   f_Progress.value = fScoreValue;
   f_Progress_Score.textContent = fScoreValue + "%";
