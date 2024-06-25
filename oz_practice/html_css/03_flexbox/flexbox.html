@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        ul{
+            display: flex;
+            padding: 0;
+            list-style-type: none;
+            height: 200px;
+            align-items: center;
+
+        }
+        li{
+            background-color: tomato;
+        }
+        /*짝수번째 li 배경색 지정*/
+        li:nth-child(2n){
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>세미네 집 인형 아가들</h2>
+    <ul>
+        <li>주박이</li>
+        <li>토심이</li>
+        <li>토뭉이</li>
+        <li>바덕이</li>
+        <li>라이옹</li>
+    </ul>
+</body>
+</html>
